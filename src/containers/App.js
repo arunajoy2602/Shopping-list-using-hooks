@@ -1,10 +1,14 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import Header from '../components/Header/Header';
 import Lists from './Lists';
 import List from './List';
 import Form from './Form';
+import GlobalContext from '../Context/GlobalContext';
+// import ListsContextProvider, { ListsContext } from '../Context/ListsContextProvider';
+// import ItemsContextProvider, { ItemsContext } from '../Context/ItemsContextProvider';
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -27,11 +31,13 @@ const App = () => (
     <GlobalStyle />
     <AppWrapper>
       <Header />
-      <Switch>
-        <Route exact path='/' component={Lists} />
-        <Route path='/list/:id/new' component={Form} />
-        <Route path='/list/:id' component={List} />
-      </Switch>
+      <GlobalContext>
+        <Routes>
+          <Route path='/' element={<Lists />} />
+          <Route path='/list/:id/new' element={<Form />} />
+          <Route path='/list/:id' element={<List />} />
+        </Routes>
+      </GlobalContext>
     </AppWrapper>
   </>
 );

@@ -29,7 +29,7 @@ const SubHeaderButton = styled(Button)`
 const SubHeader = ({ goBack, title, openForm = false }) => (
   <SubHeaderWrapper>
     {goBack && (
-      <SubHeaderButton onClick={goBack}>{`< Go Back`}</SubHeaderButton>
+      <SubHeaderButton onClick={goBack}>{`<Back`}</SubHeaderButton>
     )}
     <Title>{title}</Title>
     {openForm && (
